@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# Environment / secrets
+.env
+.env.*
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+build/
+*.log
+
+# Speech models and generated audio (large / generated)
+models/
+*.onnx
+*.bin
+*.wav
+*.mp3
+
+# Editors
+.vscode/
+.idea/
