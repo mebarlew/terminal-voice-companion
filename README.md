@@ -6,7 +6,7 @@ A voice conversation layer for [Claude Code](https://github.com/anthropics/claud
 
 ## What this is
 
-A lightweight companion around Claude Code that gives you a real back-and-forth voice conversation: push-to-talk to speak, short spoken summaries back, and the ability to interrupt it by talking (barge-in). The code stays on your screen the whole time. Voice is for talking through problems, giving instructions, and hearing short summaries, never for reading code out loud.
+A lightweight companion around Claude Code that gives you a real back-and-forth voice conversation: it listens while you talk, gives short spoken summaries back, and lets you interrupt it by talking (barge-in). The code stays on your screen the whole time. Voice is for talking through problems, giving instructions, and hearing short summaries, never for reading code out loud.
 
 It is not hands-free, eyes-off coding. When Claude is actually editing files you will sit in silence, because the voice layer cannot speed that part up. Think of it as a talk-and-glance layer over Claude Code, not a replacement for looking at the screen.
 
@@ -24,7 +24,7 @@ This is an attempt to fill that gap.
 
 - **Brain:** Claude Code, on your existing subscription. No per-token billing.
 - **Voice:** built on [VoiceMode](https://github.com/mbailey/voicemode), an MCP server that runs local Whisper (speech to text) and Kokoro (text to speech). Because the voice runs as a tool inside a normal interactive Claude Code session, it stays on your subscription with no API metering.
-- **Interaction:** push-to-talk. Hold a key to speak, release to send. Holding the key while it is talking interrupts it. Push-to-talk also sidesteps echo cancellation, since the mic stays closed unless you are holding the key.
+- **Interaction:** two modes, switchable in settings. Default is open-mic: it listens continuously and uses voice detection to know when you have finished talking, like a normal voice call. Optional push-to-talk: hold a key to speak, release to send, for noisy rooms or when you are not on headphones. Either way, talking while it speaks interrupts it (barge-in). Open-mic needs headphones, otherwise the mic picks up the speech output and it interrupts itself.
 - **Cost:** roughly zero marginal cost. The subscription is already paid, and the speech models run locally.
 
 ## Roadmap
@@ -33,8 +33,11 @@ Phase 1, the part that makes voice actually feel fluid:
 
 - [ ] Baseline: VoiceMode running against Claude Code on the subscription
 - [ ] Warm the speech models at startup so the first reply is not a multi-second freeze
-- [ ] Push-to-talk with real barge-in (key down while it speaks aborts playback)
+- [ ] Open-mic conversation with real barge-in (talk to interrupt; headphones recommended)
+- [ ] Push-to-talk as a switchable alternative for speakers and noisy rooms
 - [ ] Stop it speaking code and file paths out loud (filter the spoken stream, ask for short spoken summaries)
+
+Open-mic comes first because it is the harder mode (echo, turn detection, barge-in over a live mic). Push-to-talk shares the same pipeline and only changes the trigger, so it slots in afterward as a small addition.
 
 Later, only if Phase 1 feels good: a command panel for firing preset commands, and custom voice commands.
 
