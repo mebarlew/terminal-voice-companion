@@ -36,6 +36,7 @@ Phase 1, the part that makes voice actually feel fluid:
 - [ ] Open-mic conversation with real barge-in (talk to interrupt; headphones recommended)
 - [ ] Push-to-talk as a switchable alternative for speakers and noisy rooms
 - [ ] Stop it speaking code and file paths out loud (filter the spoken stream, ask for short spoken summaries)
+- [ ] Package the manual setup into a one-command install for others, scripted from the real steps once they work
 
 Open-mic comes first because it is the harder mode (echo, turn detection, barge-in over a live mic). Push-to-talk shares the same pipeline and only changes the trigger, so it slots in afterward as a small addition.
 
