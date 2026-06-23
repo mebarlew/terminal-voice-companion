@@ -27,21 +27,6 @@ This is an attempt to fill that gap.
 - **Interaction:** two modes, switchable in settings. Default is open-mic: it listens continuously and uses voice detection to know when you have finished talking, like a normal voice call. Optional push-to-talk: hold a key to speak, release to send, for noisy rooms or when you are not on headphones. Either way, talking while it speaks interrupts it (barge-in). Open-mic needs headphones, otherwise the mic picks up the speech output and it interrupts itself.
 - **Cost:** roughly zero marginal cost. The subscription is already paid, and the speech models run locally.
 
-## Roadmap
-
-Phase 1, the part that makes voice actually feel fluid:
-
-- [ ] Baseline: VoiceMode running against Claude Code on the subscription
-- [ ] Warm the speech models at startup so the first reply is not a multi-second freeze
-- [ ] Open-mic conversation with real barge-in (talk to interrupt; headphones recommended)
-- [ ] Push-to-talk as a switchable alternative for speakers and noisy rooms
-- [ ] Stop it speaking code and file paths out loud (filter the spoken stream, ask for short spoken summaries)
-- [ ] Package the manual setup into a one-command install for others, scripted from the real steps once they work
-
-Open-mic comes first because it is the harder mode (echo, turn detection, barge-in over a live mic). Push-to-talk shares the same pipeline and only changes the trigger, so it slots in afterward as a small addition.
-
-Later, only if Phase 1 feels good: a command panel for firing preset commands, and custom voice commands.
-
 ## Built on
 
 - [VoiceMode](https://github.com/mbailey/voicemode) (MIT) for the local voice stack
